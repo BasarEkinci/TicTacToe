@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
         if(!oneTime)
         {
             ScoreX++;
+            PlayerPrefs.SetInt("ScoreX",ScoreX);
             IsGameEnded = true;
             oneTime = true;
         }
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         if(!oneTime)
         {
             ScoreO++;
+            PlayerPrefs.SetInt("ScoreO",ScoreO);
             IsGameEnded = true;
             oneTime = true;
         }

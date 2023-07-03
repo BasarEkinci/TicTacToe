@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WinCheck : MonoBehaviour
-{
-    
+{ 
     public static WinCheck Instance { get; private set; }
+    public string WinObject { get; set; }
     
     [SerializeField] List<GameObject> areaList;
     
     private GameObject[,] areaArray = new GameObject[3, 3];
 
-    public string WinObject { get; set; }
+
 
     private void Awake()
     {
