@@ -7,6 +7,7 @@ public class WinCheck : MonoBehaviour
 
     private GameObject[,] areaArray = new GameObject[3, 3];
 
+    private bool oneTime = false;
     private void Start()
     {
         for (int i = 0; i < areaArray.GetLength(0); i++)
@@ -25,11 +26,15 @@ public class WinCheck : MonoBehaviour
 
     private void Update()
     {
-        if(CheckWinObject() == "O(Clone)")
+        if (CheckWinObject() == "O(Clone)")
+        {
             GameManager.Instance.AddScoreToO();
-        else if(CheckWinObject() == "X(Clone)")
+
+        }
+        else if (CheckWinObject() == "X(Clone)")
+        {
             GameManager.Instance.AddScoreToX();
-        
+        }
     }
 
     private string CheckWinObject()
@@ -40,41 +45,39 @@ public class WinCheck : MonoBehaviour
         {
             winObject = areaArray[0, 0].name;
         }
-        if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
+        else if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
+        {
+            winObject = areaArray[1, 0].name;
+        }
+        else if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
+        {
+            winObject = areaArray[2, 0].name;
+        }
+        else if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
         {
             winObject = areaArray[0, 0].name;
         }
-        if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
+        else if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 1].name == areaArray[2, 1].name)
+        {
+            winObject = areaArray[0, 1].name;
+        }
+        else if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
+        {
+            winObject = areaArray[0, 2].name;
+        }
+        else if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
         {
             winObject = areaArray[0, 0].name;
         }
-        
-        
-        //Columns
-        if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
+        else if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
         {
-            winObject = areaArray[0, 0].name;
+            winObject = areaArray[0, 2].name;
         }
-        if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 1].name)
+        else
         {
-            winObject = areaArray[0, 0].name;
+            winObject = "";
         }
-        if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
-        {
-            winObject = areaArray[0, 0].name;
-        }
-        
-        //Cross
-        if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
-        {
-            winObject = areaArray[0, 0].name;
-        }
-        if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
-        {
-            winObject = areaArray[0, 0].name;
-        }
-
         return winObject;
-
+        
     }
 }

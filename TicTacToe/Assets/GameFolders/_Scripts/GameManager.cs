@@ -4,8 +4,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int Order { get; set; }
-    
+    public int Order { get; private set; }
+    private bool oneTime = false;
+
+    public bool IsGameEnded = false;
+    public bool IsGameDraw;
     public int ScoreX { get; private set; }
     public int ScoreO { get; private set; }
     
@@ -17,17 +20,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Order = 0;
+        Order = Random.Range(0,2);
     }
 
     public void AddScoreToX()
     {
-        ScoreX++;
+        if(!oneTime)
+        {
+            ScoreX++;
+            IsGameEnded = true;
+            oneTime = true;
+        }
     }
     
     public void AddScoreToO()
     {
-        ScoreO++;
+        if(!oneTime)
+        {
+            ScoreO++;
+            IsGameEnded = true;
+            oneTime = true;
+        }
     }
     public void ChangeOrder()
     {
