@@ -7,8 +7,7 @@ public class GameManager : MonoBehaviour
     public int Order { get; private set; }
     private bool oneTime = false;
 
-    public bool IsGameEnded = false;
-    public bool IsGameDraw;
+    public bool IsGameEnded;
     public int ScoreX { get; private set; }
     public int ScoreO { get; private set; }
     
@@ -20,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        IsGameEnded = false;
         Order = Random.Range(0,2);
     }
 

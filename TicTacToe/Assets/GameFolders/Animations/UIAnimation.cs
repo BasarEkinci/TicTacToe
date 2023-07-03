@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using DG.Tweening;
 using UnityEngine;
 
-public class UIAnimation : MonoBehaviour
+namespace TicTacToe.Animations
 {
-    // Start is called before the first frame update
-    void Start()
+    public class UIAnimation : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        private void OnEnable()
+        {
+            transform.DOScale(Vector3.one,0.5f).From(Vector3.zero);
+        }
+    }    
 }
+
+

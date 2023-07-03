@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +9,8 @@ public class WinCheck : MonoBehaviour
     [SerializeField] List<GameObject> areaList;
     
     private GameObject[,] areaArray = new GameObject[3, 3];
-
-
+    private ObjectsCreator objectsCreator;
+    
 
     private void Awake()
     {
@@ -56,39 +55,44 @@ public class WinCheck : MonoBehaviour
         {
             WinObject = areaArray[0, 0].name;
         }
-        else if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
+        if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
         {
             WinObject = areaArray[1, 0].name;
         }
-        else if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
+        if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[2, 0].name;
         }
-        else if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
+        if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
         {
             WinObject = areaArray[0, 0].name;
         }
-        else if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 1].name == areaArray[2, 1].name)
+        if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 1].name == areaArray[2, 1].name)
         {
             WinObject = areaArray[0, 1].name;
         }
-        else if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
+        if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[0, 2].name;
         }
-        else if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
+        if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[0, 0].name;
         }
-        else if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
+        if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
         {
             WinObject = areaArray[0, 2].name;
         }
-        else
+
+        if (FindObjectOfType(typeof(ObjectsCreator)) == null)
         {
             WinObject = "";
         }
+        
+            
+        
         GameManager.Instance.IsGameEnded = true;
+
         return WinObject;
     }
 }
