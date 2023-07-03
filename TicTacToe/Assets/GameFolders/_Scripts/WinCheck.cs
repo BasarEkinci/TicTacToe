@@ -1,13 +1,24 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WinCheck : MonoBehaviour
 {
+    
+    public static WinCheck Instance { get; private set; }
+    
     [SerializeField] List<GameObject> areaList;
-
+    
     private GameObject[,] areaArray = new GameObject[3, 3];
 
-    private bool oneTime = false;
+    public string WinObject { get; set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
+
     private void Start()
     {
         for (int i = 0; i < areaArray.GetLength(0); i++)
@@ -39,45 +50,45 @@ public class WinCheck : MonoBehaviour
 
     private string CheckWinObject()
     {
-        string winObject = "";
+        
         //Rows
         if (areaArray[0, 0].name == areaArray[0, 1].name && areaArray[0, 0].name == areaArray[0, 2].name)
         {
-            winObject = areaArray[0, 0].name;
+            WinObject = areaArray[0, 0].name;
         }
         else if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
         {
-            winObject = areaArray[1, 0].name;
+            WinObject = areaArray[1, 0].name;
         }
         else if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
         {
-            winObject = areaArray[2, 0].name;
+            WinObject = areaArray[2, 0].name;
         }
         else if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
         {
-            winObject = areaArray[0, 0].name;
+            WinObject = areaArray[0, 0].name;
         }
         else if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 1].name == areaArray[2, 1].name)
         {
-            winObject = areaArray[0, 1].name;
+            WinObject = areaArray[0, 1].name;
         }
         else if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
         {
-            winObject = areaArray[0, 2].name;
+            WinObject = areaArray[0, 2].name;
         }
         else if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
         {
-            winObject = areaArray[0, 0].name;
+            WinObject = areaArray[0, 0].name;
         }
         else if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
         {
-            winObject = areaArray[0, 2].name;
+            WinObject = areaArray[0, 2].name;
         }
         else
         {
-            winObject = "";
+            WinObject = "";
         }
-        return winObject;
-        
+        GameManager.Instance.IsGameEnded = true;
+        return WinObject;
     }
 }
