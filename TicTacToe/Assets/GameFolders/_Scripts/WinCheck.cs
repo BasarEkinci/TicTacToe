@@ -25,49 +25,56 @@ public class WinCheck : MonoBehaviour
 
     private void Update()
     {
-        CheckWin();
+        if(CheckWinObject() == "O(Clone)")
+            GameManager.Instance.AddScoreToO();
+        else if(CheckWinObject() == "X(Clone)")
+            GameManager.Instance.AddScoreToX();
+        
     }
 
-    void CheckWin()
+    private string CheckWinObject()
     {
+        string winObject = "";
         //Rows
         if (areaArray[0, 0].name == areaArray[0, 1].name && areaArray[0, 0].name == areaArray[0, 2].name)
         {
-            Debug.Log(areaArray[0,0].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
         {
-            Debug.Log(areaArray[1,0].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
         {
-            Debug.Log(areaArray[2,0].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         
         
         //Columns
         if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
         {
-            Debug.Log(areaArray[0,0].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 1].name)
         {
-            Debug.Log(areaArray[0,1].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
         {
-            Debug.Log(areaArray[2,2].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         
         //Cross
         if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
         {
-            Debug.Log(areaArray[2,2].name.ToUpper() + "Win the game");
+            winObject = areaArray[0, 0].name;
         }
         if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
         {
-            Debug.Log(areaArray[0,2].name.ToUpper() + "Win the game");
-        }        
-        
+            winObject = areaArray[0, 0].name;
+        }
+
+        return winObject;
+
     }
 }

@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectCheck : MonoBehaviour
+public class ObjectChecker : MonoBehaviour
 {
     
     private void OnTriggerEnter(Collider other)

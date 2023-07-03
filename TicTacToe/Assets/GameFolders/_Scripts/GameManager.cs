@@ -6,6 +6,9 @@ public class GameManager : MonoBehaviour
 
     public int Order { get; set; }
     
+    public int ScoreX { get; private set; }
+    public int ScoreO { get; private set; }
+    
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +20,15 @@ public class GameManager : MonoBehaviour
         Order = 0;
     }
 
+    public void AddScoreToX()
+    {
+        ScoreX++;
+    }
+    
+    public void AddScoreToO()
+    {
+        ScoreO++;
+    }
     public void ChangeOrder()
     {
         if (Order == 1)
