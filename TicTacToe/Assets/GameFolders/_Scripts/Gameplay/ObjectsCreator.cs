@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TicTacToe.Managers;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,7 +12,7 @@ public class ObjectsCreator : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (objectCreator == GetClicked(out RaycastHit hit))
+            if (objectCreator == GetClicked(out RaycastHit hit) && !GameManager.Instance.IsGameEnded)
             {
                 Instantiate(objects[GameManager.Instance.Order], transform.position, transform.rotation);
                 GameManager.Instance.ChangeOrder();

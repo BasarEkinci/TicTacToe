@@ -1,5 +1,7 @@
+using TicTacToe.Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = GameManager.Instance.ScoreX + " : " + GameManager.Instance.ScoreO;
+        scoreText.text = PlayerPrefs.GetInt("ScoreX") + " : " + PlayerPrefs.GetInt("ScoreO");
 
         if (GameManager.Instance.IsGameEnded)
         {
@@ -39,5 +41,11 @@ public class UIManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void RestartButton()
+    {
+        GameManager.Instance.IsGameEnded = false;
+        SceneManager.LoadScene(1);
     }
 }

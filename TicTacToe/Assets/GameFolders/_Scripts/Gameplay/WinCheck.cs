@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TicTacToe.Managers;
 using UnityEngine;
 
 public class WinCheck : MonoBehaviour
@@ -49,50 +50,60 @@ public class WinCheck : MonoBehaviour
 
     private string CheckWinObject()
     {
-        
         //Rows
         if (areaArray[0, 0].name == areaArray[0, 1].name && areaArray[0, 0].name == areaArray[0, 2].name)
         {
             WinObject = areaArray[0, 0].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        
         if (areaArray[1, 0].name == areaArray[1, 1].name && areaArray[1, 0].name == areaArray[1, 2].name)
         {
             WinObject = areaArray[1, 0].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        
         if (areaArray[2, 0].name == areaArray[2, 1].name && areaArray[2, 0].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[2, 0].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        //Columns: 
         if (areaArray[0, 0].name == areaArray[1, 0].name && areaArray[0, 0].name == areaArray[2, 0].name)
         {
             WinObject = areaArray[0, 0].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        
         if (areaArray[0, 1].name == areaArray[1, 1].name && areaArray[0, 1].name == areaArray[2, 1].name)
         {
             WinObject = areaArray[0, 1].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        
         if (areaArray[0, 2].name == areaArray[1, 2].name && areaArray[0, 2].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[0, 2].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        //Corners---------------------------------------------------------------------------------------
         if (areaArray[0, 0].name == areaArray[1, 1].name && areaArray[0, 0].name == areaArray[2, 2].name)
         {
             WinObject = areaArray[0, 0].name;
+            GameManager.Instance.IsGameEnded = true;
         }
+        
         if (areaArray[0, 2].name == areaArray[1, 1].name && areaArray[0, 2].name == areaArray[2, 0].name)
         {
             WinObject = areaArray[0, 2].name;
+            GameManager.Instance.IsGameEnded = true;
         }
-
+        
         if (FindObjectOfType(typeof(ObjectsCreator)) == null)
         {
             WinObject = "";
+            GameManager.Instance.IsGameEnded = true;
         }
-        
-            
-        
-        GameManager.Instance.IsGameEnded = true;
-
         return WinObject;
     }
 }
